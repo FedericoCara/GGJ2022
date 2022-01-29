@@ -1,0 +1,56 @@
+# =============== #
+# Unity generated #
+# =============== #
+/Temp/
+/Library/
+/Logs/
+/UserSettings/
+
+# ===================================== #
+# JavaScript generated #
+# ===================================== #
+/node_modules
+package-lock.json
+
+# ===================================== #
+# Visual Studio / MonoDevelop generated #
+# ===================================== #
+ExportedObj/
+obj/
+*.svd
+*.userprefs
+/*.csproj
+*.pidb
+*.suo
+/*.sln
+*.user
+*.unityproj
+*.booproj
+*.vs
+.vscode/
+
+# ============ #
+# OS generated #
+# ============ #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# =========== #
+# Temp assets #
+# =========== #
+Assets/Standard Assets
+Assets/Editor/ImageEffects
+
+# ======== #
+# Exports  #
+# ======== #
+win deploy/
+ios test/
+android deploy/
+webgl deploy/
+web deploy/
