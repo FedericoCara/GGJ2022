@@ -17,30 +17,49 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private GameObject inAcceptanceGO;
 
+    [SerializeField]
+    private ScoreController score;
+    public ScoreController Score {
+        get => score;
+        set => score = value;
+    }
+
+    public Color SpriteColor {
+        get => inAcceptanceSprite.color;
+        set => inAcceptanceSprite.color = value;
+    }
+
+    private SpriteRenderer inAcceptanceSprite;
+
     private List<Ball> ballsToRemove = new List<Ball>();
 
     private void Awake() {
         ownCollider = GetComponentInChildren<CircleCollider2D>();
         ownSize = ownCollider.radius * ownCollider.transform.lossyScale.magnitude;
+        inAcceptanceSprite = inAcceptanceGO.GetComponent<SpriteRenderer>();
     }
 
     private void Update() {
+        if (GameManager.Instance.GameFinished)
+            return;
+
         ballsInAcceptanceArea.ForEach(ball => {
             if (Input.GetKeyDown(ball.Key)) {
                 PerformAction(ball);
             }
         });
-        ballsToRemove.ForEach(ballToRemove=> {
-            RemoveBallInAcceptance(ballToRemove);
-
-            Destroy(ballToRemove.gameObject);
-        });
+        ballsToRemove.ForEach(ballToRemove=> RemoveBallInAcceptance(ballToRemove));
         ballsToRemove.Clear();
     }
 
     private void PerformAction(Ball ball) {
         ballsToRemove.Add(ball);
-        
+        if (ball.Good) {
+            GameManager.Instance.OnPlayerSuccess(this);
+        } else {
+            GameManager.Instance.OnPlayerExploded(this);
+        }
+        Destroy(ball.gameObject);
     }
 
     private void OnTriggerStay2D(Collider2D collision) {

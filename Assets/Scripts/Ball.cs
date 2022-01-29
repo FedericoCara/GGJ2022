@@ -7,6 +7,10 @@ using UnityEngine.UI;
 public class Ball : MonoBehaviour {
 
     [SerializeField]
+    private bool good = true;
+    public bool Good => good;
+
+    [SerializeField]
     private KeyCode key;
     public KeyCode Key {
         get => key;
@@ -45,6 +49,8 @@ public class Ball : MonoBehaviour {
 
     //Set speed
     public float speed;
+    //Set speed
+    public float horizontalMultiplier = 5;
     //Increasing value for lerp
     float moveSpeed;
     //Linerenderer's position index
@@ -68,8 +74,13 @@ public class Ball : MonoBehaviour {
         if (indexNum > positions.Length - 1)
             pathFinished = true;
 
+        Vector3 difBetweenVectors = positions[indexNum] - positions[indexNum + 1];
+        bool horizontal = Mathf.Abs(difBetweenVectors.x / difBetweenVectors.y) > 10;
+        float distanceToNextPoint = Vector3.Distance(positions[indexNum], positions[indexNum + 1]);
+
         //increase lerp value relative to the distance between points to keep the speed consistent.
-        moveSpeed += speed / Vector3.Distance(positions[indexNum], positions[indexNum + 1]) * Time.deltaTime;
+        moveSpeed += (horizontal? horizontalMultiplier : 1)* speed / distanceToNextPoint * Time.deltaTime;
+
         //and lerp
         transform.position = Vector3.Lerp(positions[indexNum], positions[indexNum + 1], moveSpeed - indexNum);
 
