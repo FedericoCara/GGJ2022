@@ -70,7 +70,9 @@ public class PlayerController : MonoBehaviour {
             return;
 
         ballsInAcceptanceArea.ForEach(ball => {
-            if (Input.GetKeyDown(ball.Key)) {
+            if (ball == null) {
+                ballsToRemove.Add(ball);
+            }else if (Input.GetKeyDown(ball.Key)) {
                 PerformAction(ball);
             }
         });
@@ -90,7 +92,9 @@ public class PlayerController : MonoBehaviour {
             GameManager.Instance.OnPlayerExploded(this);
             audioSource.PlayOneShot(bombSound);
             if (ball != null) {
-                ball.GetComponent<GeneralTween>().Activate();
+                GeneralTween tween = ball.GetComponent<GeneralTween>();
+                tween.Stop();
+                tween.Activate();
                 ball.enabled = false;
                 Destroy(ball.gameObject, 0.5f);
             }
