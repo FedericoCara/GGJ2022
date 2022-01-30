@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Mimic.LolFramework;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    [SerializeField, Range(0,100)]
+    [SerializeField, Range(0, 100)]
     private float percentageAcceptance = 50;
     private CircleCollider2D ownCollider;
 
@@ -42,14 +43,26 @@ public class PlayerController : MonoBehaviour {
     [SerializeField]
     private SpriteRenderer mainSprite;
 
+    [SerializeField]
+    private AudioSource audioSource;
+
+    [SerializeField]
+    private AudioClip bombSound;
+
+    [SerializeField]
+    private AudioClip successSound;
+
     private SpriteRenderer inAcceptanceSprite;
 
     private List<Ball> ballsToRemove = new List<Ball>();
+
+    private GeneralTween generalTween;
 
     private void Awake() {
         ownCollider = GetComponentInChildren<CircleCollider2D>();
         ownSize = ownCollider.radius * ownCollider.transform.lossyScale.magnitude;
         inAcceptanceSprite = inAcceptanceGO.GetComponent<SpriteRenderer>();
+        generalTween = GetComponent<GeneralTween>();
     }
 
     private void Update() {
@@ -69,11 +82,19 @@ public class PlayerController : MonoBehaviour {
         ballsToRemove.Add(ball);
         if (ball.Good) {
             GameManager.Instance.OnPlayerSuccess(this);
+            audioSource.PlayOneShot(successSound);
+            generalTween.Activate();
+            if (ball != null)
+                Destroy(ball.gameObject);
         } else {
             GameManager.Instance.OnPlayerExploded(this);
+            audioSource.PlayOneShot(bombSound);
+            if (ball != null) {
+                ball.GetComponent<GeneralTween>().Activate();
+                ball.enabled = false;
+                Destroy(ball.gameObject, 0.5f);
+            }
         }
-        if(ball!=null)
-            Destroy(ball.gameObject);
     }
 
     private void OnTriggerStay2D(Collider2D collision) {

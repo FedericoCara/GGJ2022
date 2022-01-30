@@ -75,7 +75,7 @@ public class Ball : MonoBehaviour {
             pathFinished = true;
 
         Vector3 difBetweenVectors = positions[indexNum] - positions[indexNum + 1];
-        bool horizontal = Mathf.Abs(difBetweenVectors.x / difBetweenVectors.y) > 10;
+        bool horizontal = Mathf.Abs(difBetweenVectors.x / difBetweenVectors.y) > 5;
         float distanceToNextPoint = Vector3.Distance(positions[indexNum], positions[indexNum + 1]);
 
         //increase lerp value relative to the distance between points to keep the speed consistent.

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public class ScoreController : MonoBehaviour
     [SerializeField]
     private Text playerNameTxt;
     public string Name {
+        get => playerNameTxt.text;
         set => playerNameTxt.text = value;
     }
     [SerializeField]
@@ -21,6 +23,12 @@ public class ScoreController : MonoBehaviour
             score = value;
             playerScoreTxt.text = value.ToString();
         }
+    }
+
+    public void SetValues(ScoreController scoreController) {
+        Name = scoreController.Name;
+        Score = scoreController.Score;
+        Color = scoreController.Color;
     }
 
     public Color Color {
