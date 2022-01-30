@@ -47,12 +47,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135afa72530492642b8de3bf585c878a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  good: 1
   key: 0
   sprite: {fileID: 3372510669644637782}
   canvas: {fileID: 6014747299271188349}
   keyText: {fileID: 2841949830549251269}
   spriteColor: {r: 1, g: 1, b: 1, a: 1}
-  speed: 1
+  speed: 2
+  horizontalMultiplier: 5
 --- !u!50 &8791269613856205279
 Rigidbody2D:
   serializedVersion: 4
@@ -150,6 +152,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -250,6 +253,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &6675991322461780258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -313,6 +317,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:

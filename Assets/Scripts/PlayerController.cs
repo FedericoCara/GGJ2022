@@ -23,11 +23,24 @@ public class PlayerController : MonoBehaviour {
         get => score;
         set => score = value;
     }
+    // Hola Federico. Sigue al conejo blanco.
 
-    public Color SpriteColor {
-        get => inAcceptanceSprite.color;
-        set => inAcceptanceSprite.color = value;
+    public int SpriteColor {
+        get => spriteIndex.IndexOf(mainSprite.sprite);
+        set {
+            mainSprite.sprite = spriteIndex[value];
+            inAcceptanceSprite.sprite = spriteInAcceptanceIndex[value];
+        }
     }
+
+    [SerializeField]
+    private List<Sprite> spriteIndex;
+
+    [SerializeField]
+    private List<Sprite> spriteInAcceptanceIndex;
+
+    [SerializeField]
+    private SpriteRenderer mainSprite;
 
     private SpriteRenderer inAcceptanceSprite;
 
@@ -59,13 +72,14 @@ public class PlayerController : MonoBehaviour {
         } else {
             GameManager.Instance.OnPlayerExploded(this);
         }
-        Destroy(ball.gameObject);
+        if(ball!=null)
+            Destroy(ball.gameObject);
     }
 
     private void OnTriggerStay2D(Collider2D collision) {
         Ball ball = collision.GetComponent<Ball>();
         if (ball != null) {
-            float distance = (collision.transform.position - ownCollider.transform.position).magnitude;
+            float distance = (collision.transform.position - ownCollider.bounds.center).magnitude;
             float collidingPercentage = (1 - distance / ownSize) * 100;
             Debug.Log($"Colliding with {collision.gameObject} in {collidingPercentage}%");
             if (collidingPercentage > percentageAcceptance) {

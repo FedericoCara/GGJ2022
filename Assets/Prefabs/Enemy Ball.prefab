@@ -53,7 +53,7 @@ MonoBehaviour:
   canvas: {fileID: 6014747299271188349}
   keyText: {fileID: 2841949830549251269}
   spriteColor: {r: 0, g: 0, b: 0, a: 1}
-  speed: 0.5
+  speed: 1
   horizontalMultiplier: 10
 --- !u!50 &8791269613856205279
 Rigidbody2D:
@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 8649558005532845223}
   - component: {fileID: 5315372543571628028}
   - component: {fileID: 2841949830549251269}
+  - component: {fileID: 6950196580436335563}
   m_Layer: 5
   m_Name: Letter
   m_TagString: Untagged
@@ -171,6 +172,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Q
+--- !u!114 &6950196580436335563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2939657185166804218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e19747de3f5aca642ab2be37e372fb86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &6303388010261847067
 GameObject:
   m_ObjectHideFlags: 0

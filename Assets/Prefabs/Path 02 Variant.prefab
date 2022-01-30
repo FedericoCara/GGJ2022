@@ -65,7 +65,7 @@ PrefabInstance:
     - target: {fileID: 6696262483706416119, guid: 12401a1f682b50f40b76be3cb09e9e0e,
         type: 3}
       propertyPath: m_Name
-      value: Path 02
+      value: Path 02 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6696262483706416121, guid: 12401a1f682b50f40b76be3cb09e9e0e,
         type: 3}
@@ -76,6 +76,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Positions.Array.data[1].x
       value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696262484791181586, guid: 12401a1f682b50f40b76be3cb09e9e0e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696262484791181586, guid: 12401a1f682b50f40b76be3cb09e9e0e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696262484791181586, guid: 12401a1f682b50f40b76be3cb09e9e0e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6696262484791181586, guid: 12401a1f682b50f40b76be3cb09e9e0e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12401a1f682b50f40b76be3cb09e9e0e, type: 3}

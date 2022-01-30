@@ -88,7 +88,7 @@ public class Ball : MonoBehaviour {
             OnPathFinished();
         }
     }
-
+    // Hola Federico. Sigue al conejo blanco. 
     private void SetKey(KeyCode key) {
         this.key = key;
         keyText.text = key.ToString();
