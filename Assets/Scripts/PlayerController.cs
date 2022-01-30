@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour {
         ballsInAcceptanceArea.ForEach(ball => {
             if (ball == null) {
                 ballsToRemove.Add(ball);
-            }else if (Input.GetKeyDown(ball.Key)) {
+            }else if (!ball.Used && Input.GetKeyDown(ball.Key)) {
                 PerformAction(ball);
             }
         });
@@ -99,6 +99,7 @@ public class PlayerController : MonoBehaviour {
                 Destroy(ball.gameObject, 0.5f);
             }
         }
+        ball.Used = true;
     }
 
     private void OnTriggerStay2D(Collider2D collision) {

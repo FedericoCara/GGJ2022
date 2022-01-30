@@ -45,6 +45,8 @@ public class Ball : MonoBehaviour {
         }
     }
 
+    public bool Used { get; set; } = false;
+
     private Vector3[] positions;
 
     //Set speed
