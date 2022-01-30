@@ -220,6 +220,11 @@ public class GameManager : Singleton<GameManager> {
                 playerCountMultiplier = 5f / 4f;
                 break;
         }
+        return SpawnEnemyBallsLoop(waitTimeMultiplier, playerCountMultiplier);
+    }
+
+    private IEnumerator SpawnEnemyBallsLoop(float waitTimeMultiplier, float playerCountMultiplier) {
+
         while (true) {
             yield return new WaitForSeconds(Random.Range(timeRangeBetweenBombSpawns.x, timeRangeBetweenBombSpawns.y) / waitTimeMultiplier * playerCountMultiplier);
             Path bombPath = GetBombPath();

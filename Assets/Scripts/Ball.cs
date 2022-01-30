@@ -76,20 +76,25 @@ public class Ball : MonoBehaviour {
         if (indexNum > positions.Length - 1)
             pathFinished = true;
 
-        Vector3 difBetweenVectors = positions[indexNum] - positions[indexNum + 1];
-        bool horizontal = Mathf.Abs(difBetweenVectors.x / difBetweenVectors.y) > 5;
-        float distanceToNextPoint = Vector3.Distance(positions[indexNum], positions[indexNum + 1]);
-
-        //increase lerp value relative to the distance between points to keep the speed consistent.
-        moveSpeed += (horizontal? horizontalMultiplier : 1)* speed / distanceToNextPoint * Time.deltaTime;
-
-        //and lerp
-        transform.position = Vector3.Lerp(positions[indexNum], positions[indexNum + 1], moveSpeed - indexNum);
+        ManageMovemente();
 
         if ((transform.position - positions[positions.Length - 1]).sqrMagnitude < 0.5f) {
             OnPathFinished();
         }
     }
+
+    private void ManageMovemente() {
+        Vector3 difBetweenVectors = positions[indexNum] - positions[indexNum + 1];
+        bool horizontal = Mathf.Abs(difBetweenVectors.x / difBetweenVectors.y) > 5;
+        float distanceToNextPoint = Vector3.Distance(positions[indexNum], positions[indexNum + 1]);
+
+        //increase lerp value relative to the distance between points to keep the speed consistent.
+        moveSpeed += (horizontal ? horizontalMultiplier : 1) * speed / distanceToNextPoint * Time.deltaTime;
+
+        //and lerp
+        transform.position = Vector3.Lerp(positions[indexNum], positions[indexNum + 1], moveSpeed - indexNum);
+    }
+
     // Hola Federico. Sigue al conejo blanco. 
     private void SetKey(KeyCode key) {
         this.key = key;
